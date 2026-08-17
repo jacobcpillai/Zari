@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZARDAZ | Luxury Vintage & Fashion</title>
+  <!-- Google Fonts: Playfair Display (Serif) & Jost (Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS VARIABLES & VINTAGE PALETTE */
+    :root {
+      --bg-warm: #FAF8F5;
+      --bg-card: #F4F0EA;
+      --text-main: #2A2421;
+      --text-muted: #766E65;
+      --accent-brass: #C5A059;
+      --accent-brass-hover: #A8833D;
+      --accent-burgundy: #6B2D38;
+      --border-color: #E6E0D6;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Jost', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-warm);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TYPOGRAPHY & UTILITIES */
+    h1, h2, h3, h4, .brand-font { font-family: var(--font-serif); }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 20px; }
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      background-color: var(--text-main);
+      color: var(--bg-warm);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.2s ease;
+      border: 1px solid var(--text-main);
+    }
+    .btn:hover {
+      background-color: var(--accent-brass);
+      border-color: var(--accent-brass);
+      color: #fff;
+    }
+    .badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 7px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .badge-new { background: var(--accent-brass); color: #fff; }
+    .badge-sale { background: var(--accent-burgundy); color: #fff; }
+
+    /* HEADER STACK */
+    /* 1. Top Promo Bar */
+    .top-promo-bar {
+      background-color: var(--accent-burgundy);
+      color: #FDFBF7;
+      font-size: 12px;
+      text-align: center;
+      padding: 7px 15px;
+      letter-spacing: 0.5px;
+    }
+    /* 2. Utility Header Bar */
+    .utility-bar {
+      background-color: #F0EDE6;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 6px 0;
+    }
+    .utility-flex { display: flex; justify-content: flex-end; align-items: center; gap: 20px; }
+    .utility-flex select {
+      background: transparent;
+      border: none;
+      font-size: 11px;
+      color: var(--text-muted);
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* 3. Main Header */
+    .main-header {
+      background-color: var(--bg-warm);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      align-items: center;
+      gap: 25px;
+    }
+    /* Brand Logo */
+    .logo-container { display: flex; align-items: center; gap: 12px; }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--accent-brass);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--accent-brass);
+      font-size: 18px;
+    }
+    .logo-text {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    /* Search Bar */
+    .search-box {
+      position: relative;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 9px 40px 9px 15px;
+      background: #FAF8F5;
+      border: 1px solid var(--border-color);
+      font-size: 13px;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .search-box input:focus { border-color: var(--accent-brass); }
+    .search-box button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    /* Header Actions */
+    .header-actions { display: flex; align-items: center; gap: 20px; font-size: 12px; }
+    .action-item { display: flex; align-items: center; gap: 6px; cursor: pointer; position: relative; }
+    .action-badge {
+      background: var(--accent-brass);
+      color: #fff;
+      font-size: 10px;
+      border-radius: 10px;
+      padding: 1px 6px;
+      font-weight: 600;
+    }
+
+    /* NAVIGATION & MEGA MENU */
+    .main-nav {
+      background-color: var(--bg-warm);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 30px;
+    }
+    .nav-item { position: relative; padding: 12px 0; }
+    .nav-link {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      color: var(--text-main);
+      padding-bottom: 10px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .nav-item:hover .nav-link, .nav-item.active .nav-link {
+      color: var(--accent-brass);
+      border-bottom-color: var(--accent-brass);
+    }
+
+    /* Mega Dropdown */
+    .mega-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      padding: 25px;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      z-index: 90;
+    }
+    .nav-item:hover .mega-dropdown { display: grid; }
+    .dropdown-col h5 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      color: var(--accent-brass);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 4px;
+    }
+    .dropdown-col ul { list-style: none; }
+    .dropdown-col li { margin-bottom: 6px; }
+    .dropdown-col a { font-size: 12px; color: var(--text-muted); }
+    .dropdown-col a:hover { color: var(--text-main); text-decoration: underline; }
+
+    /* HERO & BANNER SECTION */
+    .hero-banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 25px 0 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+    .hero-image-block {
+      background: linear-gradient(135deg, #EAE3D2 0%, #D8CFC0 100%);
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 30px;
+    }
+    .hero-image-block::after {
+      content: '';
+      position: absolute;
+      inset: 15px;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+    }
+    .hero-content {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: #FDFBF7;
+    }
+    .hero-subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-brass);
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: 38px;
+      line-height: 1.15;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+
+    /* SECTION HEADERS */
+    .section-title {
+      text-align: center;
+      margin: 40px 0 25px;
+      position: relative;
+    }
+    .section-title h2 {
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      display: inline-block;
+      background: var(--bg-warm);
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .section-title::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border-color);
+      z-index: 1;
+    }
+
+    /* PRODUCT GRID & CARDS */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    .product-card {
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+    .product-thumb {
+      height: 260px;
+      background: #F8F5F0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .product-thumb-placeholder {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: #A39B90;
+      font-size: 20px;
+    }
+    .product-badge-pos { position: absolute; top: 10px; left: 10px; z-index: 2; }
+    .product-wishlist-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background: #FFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .product-wishlist-btn:hover { color: var(--accent-burgundy); }
+    .product-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-category { font-size: 10px; text-transform: uppercase; color: var(--accent-brass); letter-spacing: 1px; margin-bottom: 4px; }
+    .product-title { font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--text-main); }
+    .product-price-row { display: flex; align-items: center; gap: 8px; margin-top: auto; margin-bottom: 12px; }
+    .product-price { font-size: 14px; font-weight: 600; color: var(--text-main); }
+    .product-old-price { font-size: 12px; text-decoration: line-through; color: var(--text-muted); }
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 8px;
+      background: var(--bg-warm);
+      border: 1px solid var(--border-color);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .add-to-cart-btn:hover {
+      background: var(--text-main);
+      color: #FFF;
+      border-color: var(--text-main);
+    }
+
+    /* CART SLIDE-OVER DRAWER */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      z-index: 200;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background: #FFF;
+      z-index: 201;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-drawer.open { right: 0; }
+    .drawer-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-title { font-size: 18px; font-weight: 600; }
+    .close-drawer { font-size: 22px; color: var(--text-muted); }
+    .drawer-body { padding: 20px; overflow-y: auto; flex-grow: 1; }
+    .cart-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .cart-item-thumb {
+      width: 60px;
+      height: 75px;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .cart-item-details { flex-grow: 1; }
+    .cart-item-title { font-size: 13px; font-weight: 500; }
+    .cart-item-price { font-size: 12px; font-weight: 600; margin-top: 4px; }
+    .cart-item-qty { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .remove-item { font-size: 11px; color: var(--accent-burgundy); margin-top: 5px; cursor: pointer; }
+    .drawer-footer {
+      padding: 20px;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-warm);
+    }
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 13px; }
+    .summary-total { font-size: 16px; font-weight: 700; color: var(--text-main); }
+
+    /* ADMIN PORTAL MODAL */
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      padding: 20px;
+    }
+    .admin-modal.open { display: flex; }
+    .admin-box {
+      background: #FFF;
+      width: 100%;
+      max-width: 950px;
+      max-height: 90vh;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    .admin-header {
+      background: var(--text-main);
+      color: #FFF;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-nav-tabs {
+      display: flex;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .tab-btn {
+      padding: 12px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+    }
+    .tab-btn.active {
+      color: var(--accent-brass);
+      border-bottom-color: var(--accent-brass);
+      background: #FFF;
+    }
+    .admin-body { padding: 25px; overflow-y: auto; flex-grow: 1; }
+    .admin-tab-content { display: none; }
+    .admin-tab-content.active { display: block; }
+
+    /* Admin Form Controls */
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: var(--text-muted); }
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      font-size: 13px;
+      outline: none;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 15px;
+    }
+    .admin-table th, .admin-table td {
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .admin-table th { background: var(--bg-card); font-weight: 600; text-transform: uppercase; font-size: 10px; letter-spacing: 1px; }
+
+    /* FOOTER */
+    .site-footer {
+      background: #201B18;
+      color: #D5CFC7;
+      padding: 50px 0 20px;
+      margin-top: 60px;
+      font-size: 12px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: var(--accent-brass);
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-bottom {
+      border-top: 1px solid #332C28;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #8C827A;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 900px) {
+      .header-grid { grid-template-columns: 1fr auto; gap: 15px; }
+      .search-box { grid-column: span 2; order: 3; }
+      .hero-banner { grid-template-columns: 1fr; }
+      .hero-image-block { min-height: 220px; }
+      .mega-dropdown { width: 90vw; grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. TOP PROMO BANNER -->
+  <div class="top-promo-bar" id="promoBannerText">
+    Get 25% off on your first order after signing up. T&C Apply
+  </div>
+
+  <!-- 2. UTILITY BAR -->
+  <div class="utility-bar">
+    <div class="container utility-flex">
+      <div>
+        <span>Store Locator: </span>
+        <select id="storeLocator">
+          <option>Dubai Mall, UAE</option>
+          <option>Mall of the Emirates, UAE</option>
+          <option>Galleria Mall, Abu Dhabi</option>
+        </select>
+      </div>
+      <div>
+        <span>Country: </span>
+        <select id="countrySelect">
+          <option selected>United Arab Emirates (AED)</option>
+          <option>Saudi Arabia (SAR)</option>
+          <option>Qatar (QAR)</option>
+          <option>United Kingdom (GBP)</option>
+        </select>
+      </div>
+      <div>
+        <span>Language: </span>
+        <select id="langSelect">
+          <option>English (Primary)</option>
+          <option>Arabic (العربية)</option>
+          <option>Hindi (हिंदी)</option>
+          <option>Malayalam (മലയാളം)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. MAIN HEADER -->
+  <header class="main-header">
+    <div class="container header-grid">
+      <!-- Logo -->
+      <a href="#" class="logo-container" onclick="filterCategory('All')">
+        <div class="logo-mark">Z</div>
+        <div class="logo-text">ZARDAZ</div>
+      </a>
+
+      <!-- Search Option -->
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search dresses, jackets, shirts..." oninput="handleSearch()">
+        <button>🔍</button>
+      </div>
+
+      <!-- Actions (Account, Wishlist, Cart, Admin) -->
+      <div class="header-actions">
+        <div class="action-item">
+          <span>👤</span>
+          <div>Hi there</div>
+        </div>
+        <div class="action-item" onclick="alert('Wishlist feature: Store items for later!')">
+          <span>♡</span>
+          <div>Wishlist <span class="action-badge" id="wishlistCount">0</span></div>
+        </div>
+        <div class="action-item" onclick="toggleCartDrawer(true)">
+          <span>🛍️</span>
+          <div>Cart <span class="action-badge" id="cartCount">0</span></div>
+        </div>
+        <!-- Admin Entry Button -->
+        <button class="btn" style="padding: 4px 10px; font-size: 10px;" onclick="openAdminPortal()">Admin Portal</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. CATEGORY NAVIGATION (NO FOOD CATEGORY AS REQUESTED) -->
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-list" id="navList">
+        <!-- Dynamically Rendered Categories -->
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 5. MAIN CONTENT AREA -->
+  <main class="container">
+    
+    <!-- Hero Banner Grid -->
+    <section class="hero-banner" id="heroSection">
+      <div class="hero-image-block">
+        <div style="text-align: center; color: var(--accent-burgundy);">
+          <div style="font-family: var(--font-serif); font-size: 28px; font-style: italic;" id="heroBadgeText">Elegance Redefined</div>
+          <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px;">ZARDAZ Atelier Collection</div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-subtitle" id="heroSubtitle">Summer Offers</div>
+        <h1 class="hero-title" id="heroTitle">BUY 2 & GET 20% OFF | BUY 3 & GET 30% OFF</h1>
+        <p class="hero-desc" id="heroDesc">Across selected linen, dresses, and vintage fashion tailoring.</p>
+        <button class="btn" onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">Shop Collection</button>
+      </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalogSection">
+      <div class="section-title">
+        <h2 id="categoryHeading">Featured Collection</h2>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="product-grid" id="productGrid">
+        <!-- Products injected dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 6. CART SLIDE-OVER DRAWER -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="toggleCartDrawer(false)"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">Shopping Cart</div>
+      <button class="close-drawer" onclick="toggleCartDrawer(false)">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItemsContainer">
+      <!-- Cart items injected dynamically -->
+    </div>
+    <div class="drawer-footer">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span class="summary-total" id="cartSubtotal">AED 0.00</span>
+      </div>
+      <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 15px;">Taxes and shipping calculated at order summary.</p>
+      <button class="btn" style="width: 100%; text-align: center;" onclick="checkoutSummary()">View Order Summary</button>
+    </div>
+  </aside>
+
+  <!-- 7. BACK-END ADMIN PORTAL MODAL -->
+  <div class="admin-modal" id="adminModal">
+    <div class="admin-box">
+      <div class="admin-header">
+        <div style="font-family: var(--font-serif); font-weight: 600;">ZARDAZ Store Control Center (Admin)</div>
+        <button style="color: #fff;" onclick="closeAdminPortal()">✕ Close</button>
+      </div>
+      <div class="admin-nav-tabs">
+        <button class="tab-btn active" onclick="switchAdminTab('productsTab', this)">Manage Products & Prices</button>
+        <button class="tab-btn" onclick="switchAdminTab('contentTab', this)">Header & Banner Content</button>
+        <button class="tab-btn" onclick="switchAdminTab('categoriesTab', this)">Manage Categories</button>
+      </div>
+      <div class="admin-body">
+        
+        <!-- Tab 1: Products Management -->
+        <div class="admin-tab-content active" id="productsTab">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3>Product Catalogue Editor</h3>
+            <button class="btn" style="padding: 6px 12px; font-size: 11px;" onclick="addNewProductPrompt()">+ Add New Item</button>
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Product Name</th>
+                <th>Price (AED)</th>
+                <th>Badge/Offer</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminProductTable">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tab 2: Store Content Editing -->
+        <div class="admin-tab-content" id="contentTab">
+          <h3>Edit Website Content Texts</h3>
+          <form onsubmit="saveContentChanges(event)" style="margin-top: 15px;">
+            <div class="form-group">
+              <label>Top Promo Banner Text</label>
+              <input type="text" class="form-control" id="editTopPromo">
+            </div>
+            <div class="form-group">
+              <label>Hero Subtitle</label>
+              <input type="text" class="form-control" id="editHeroSubtitle">
+            </div>
+            <div class="form-group">
+              <label>Hero Title Offer</label>
+              <input type="text" class="form-control" id="editHeroTitle">
+            </div>
+            <div class="form-group">
+              <label>Hero Description</label>
+              <textarea class="form-control" id="editHeroDesc" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn">Save Content Changes</button>
+          </form>
+        </div>
+
+        <!-- Tab 3: Categories Editing -->
+        <div class="admin-tab-content" id="categoriesTab">
+          <h3>Manage Active Categories</h3>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Add or rename categories for the header menu (Food is excluded per specification).</p>
+          <div id="adminCategoryList"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>ZARDAZ Boutique</h4>
+          <p>An extraordinary universe of vintage fashion, apparel, and elegant essentials for the contemporary lifestyle.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shopping Categories</h4>
+          <ul id="footerCategoryLinks">
+            <!-- Dynamic Footer Category Links -->
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#">Store Locator</a></li>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="margin-bottom: 10px;">Receive 10% off your first online order.</p>
+          <input type="email" placeholder="Enter your email" style="width: 100%; padding: 8px; font-size: 12px; border: 1px solid #443C37; background: #181412; color: #fff; margin-bottom: 8px;">
+          <button class="btn" style="width: 100%; padding: 6px;">Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 ZARDAZ Stores LLC. All rights reserved.</div>
+        <div>Payment Methods Accepted: Visa, MasterCard, Apple Pay, Cash on Delivery</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 9. APPLICATION JAVASCRIPT -->
+  <script>
+    /* INITIAL DATA STORE */
+    const defaultData = {
+      content: {
+        topPromo: "Get a 25% off on your first order after signing up. T&C Apply",
+        heroSubtitle: "Summer Offers & Vintage Apparel",
+        heroTitle: "BUY 2 & GET 20% OFF | BUY 3 & GET 30% OFF",
+        heroDesc: "Across selected linen, swimwear, lingerie, and tailored clothing."
+      },
+      categories: ["Women", "Men", "Kids", "Lingerie", "School", "Beauty", "Home"],
+      products: [
+        { id: 101, category: "Women", name: "Pure Cotton Polka Dot Barrel Dress", price: 109.00, badge: "New In", oldPrice: 140.00 },
+        { id: 102, category: "Women", name: "Linen Rich Striped Wide Leg Trousers", price: 169.00, badge: "Sale", oldPrice: 210.00 },
+        { id: 103, category: "Lingerie", name: "2pk Pure Cotton Slub Stretch Tops", price: 129.00, badge: "Popular", oldPrice: 0 },
+        { id: 104, category: "Lingerie", name: "5pk Cotton Lycra Low Rise Shorts", price: 45.00, badge: "New In", oldPrice: 60.00 },
+        { id: 105, category: "Men", name: "Pure Cotton Twisted Stitch Knit Polo", price: 279.00, badge: "Exclusive", oldPrice: 0 },
+        { id: 106, category: "Men", name: "Regular Fit Luxury Linen Shirt", price: 449.00, badge: "New In", oldPrice: 500.00 },
+        { id: 107, category: "Kids", name: "2 Pack Unisex Pure Cotton School Shirts", price: 59.00, badge: "School Essential", oldPrice: 0 },
+        { id: 108, category: "Kids", name: "Cotton Rich Zip Hoodie (6-16 Yrs)", price: 85.00, badge: "Sale", oldPrice: 110.00 },
+        { id: 109, category: "Beauty", name: "Apothecary Signature Perfume 100ml", price: 199.00, badge: "Best Seller", oldPrice: 0 },
+        { id: 110, category: "Home", name: "Pure Velvet Cushion Covers (Set of 2)", price: 89.00, badge: "New In", oldPrice: 120.00 },
+        { id: 111, category: "School", name: "Stain Resist School Uniform Trousers", price: 95.00, badge: "Essential", oldPrice: 0 }
+      ]
+    };
+
+    /* APPLICATION STATE */
+    let storeData = JSON.parse(localStorage.getItem('zardaz_store_data')) || defaultData;
+    let cart = JSON.parse(localStorage.getItem('zardaz_cart')) || [];
+    let wishlistCount = 0;
+    let currentCategory = "All";
+
+    /* PERSISTENCE HELPER */
+    function saveData() {
+      localStorage.setItem('zardaz_store_data', JSON.stringify(storeData));
+      localStorage.setItem('zardaz_cart', JSON.stringify(cart));
+      renderStore();
+    }
+
+    /* RENDER STOREFRONT */
+    function renderStore() {
+      // 1. Render Promo & Content
+      document.getElementById('promoBannerText').textContent = storeData.content.topPromo;
+      document.getElementById('heroSubtitle').textContent = storeData.content.heroSubtitle;
+      document.getElementById('heroTitle').textContent = storeData.content.heroTitle;
+      document.getElementById('heroDesc').textContent = storeData.content.heroDesc;
+
+      // 2. Render Navigation Categories
+      const navList = document.getElementById('navList');
+      const footerLinks = document.getElementById('footerCategoryLinks');
+      navList.innerHTML = '';
+      footerLinks.innerHTML = '';
+
+      // "All" Tab
+      const allLi = document.createElement('li');
+      allLi.className = `nav-item ${currentCategory === 'All' ? 'active' : ''}`;
+      allLi.innerHTML = `<a href="#catalogSection" class="nav-link" onclick="filterCategory('All')">All</a>`;
+      navList.appendChild(allLi);
+
+      storeData.categories.forEach(cat => {
+        const li = document.createElement('li');
+        li.className = `nav-item ${currentCategory === cat ? 'active' : ''}`;
+        
+        // Build Submenu structure similar to reference video
+        li.innerHTML = `
+          <a href="#catalogSection" class="nav-link" onclick="filterCategory('${cat}')">${cat}</a>
+          <div class="mega-dropdown">
+            <div class="dropdown-col">
+              <h5>New In</h5>
+              <ul>
+                <li><a href="#catalogSection" onclick="filterCategory('${cat}')">Clothing Collection</a></li>
+                <li><a href="#catalogSection" onclick="filterCategory('${cat}')">Best Sellers</a></li>
+              </ul>
+            </div>
+            <div class="dropdown-col">
+              <h5>Trends</h5>
+              <ul>
+                <li><a href="#catalogSection" onclick="filterCategory('${cat}')">Summer Linen</a></li>
+                <li><a href="#catalogSection" onclick="filterCategory('${cat}')">Vintage Specials</a></li>
+              </ul>
+            </div>
+            <div class="dropdown-col">
+              <h5>Offers</h5>
+              <ul>
+                <li><a href="#catalogSection" onclick="filterCategory('${cat}')">Buy 2 Get 20% Off</a></li>
+              </ul>
+            </div>
+          </div>
+        `;
+        navList.appendChild(li);
+
+        // Footer links
+        const fLi = document.createElement('li');
+        fLi.innerHTML = `<a href="#catalogSection" onclick="filterCategory('${cat}')">${cat}</a>`;
+        footerLinks.appendChild(fLi);
+      });
+
+      // 3. Render Product Grid
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+
+      const filteredProducts = currentCategory === "All" 
+        ? storeData.products 
+        : storeData.products.filter(p => p.category === currentCategory);
+
+      document.getElementById('categoryHeading').textContent = currentCategory === "All" ? "Featured Collection" : `${currentCategory} Collection`;
+
+      if (filteredProducts.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px;">No items found in this category.</p>`;
+      } else {
+        filteredProducts.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <div class="product-thumb">
+              ${p.badge ? `<div class="product-badge-pos"><span class="badge ${p.badge.toLowerCase().includes('sale') ? 'badge-sale' : 'badge-new'}">${p.badge}</span></div>` : ''}
+              <button class="product-wishlist-btn" onclick="toggleWishlist()">♡</button>
+              <div class="product-thumb-placeholder">ZARDAZ</div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">${p.category}</div>
+              <div class="product-title">${p.name}</div>
+              <div class="product-price-row">
+                <span class="product-price">AED ${p.price.toFixed(2)}</span>
+                ${p.oldPrice > 0 ? `<span class="product-old-price">AED ${p.oldPrice.toFixed(2)}</span>` : ''}
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart(${p.id})">Add To Cart</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      // 4. Update Header Counts
+      document.getElementById('cartCount').textContent = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById('wishlistCount').textContent = wishlistCount;
+
+      // 5. Render Cart Items
+      renderCartDrawer();
+    }
+
+    /* CATEGORY FILTER */
+    function filterCategory(cat) {
+      currentCategory = cat;
+      renderStore();
+    }
+
+    /* SEARCH FUNCTION */
+    function handleSearch() {
+      const term = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const title = card.querySelector('.product-title').textContent.toLowerCase();
+        const cat = card.querySelector('.product-category').textContent.toLowerCase();
+        if (title.includes(term) || cat.includes(term)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    /* CART & WISHLIST OPERATIONS */
+    function addToCart(productId) {
+      const product = storeData.products.find(p => p.id === productId);
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
+      }
+      saveData();
+      toggleCartDrawer(true);
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      saveData();
+    }
+
+    function renderCartDrawer() {
+      const container = document.getElementById('cartItemsContainer');
+      container.innerHTML = '';
+      let subtotal = 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 30px 0;">Your shopping cart is currently empty.</p>`;
+      } else {
+        cart.forEach(item => {
+          subtotal += item.price * item.qty;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <div class="cart-item-thumb">ZARDAZ</div>
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">AED ${(item.price * item.qty).toFixed(2)}</div>
+              <div class="cart-item-qty">Qty: ${item.qty}</div>
+              <div class="remove-item" onclick="removeFromCart(${item.id})">Remove Item</div>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      }
+      document.getElementById('cartSubtotal').textContent = `AED ${subtotal.toFixed(2)}`;
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cartDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if (open) {
+        drawer.classList.add('open');
+        overlay.style.display = 'block';
+      } else {
+        drawer.classList.remove('open');
+        overlay.style.display = 'none';
+      }
+    }
+
+    function toggleWishlist() {
+      wishlistCount++;
+      document.getElementById('wishlistCount').textContent = wishlistCount;
+    }
+
+    function checkoutSummary() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      let summaryText = "ZARDAZ ORDER SUMMARY:\n\n";
+      let total = 0;
+      cart.forEach(i => {
+        summaryText += `- ${i.name} (x${i.qty}): AED ${(i.price * i.qty).toFixed(2)}\n`;
+        total += i.price * i.qty;
+      });
+      summaryText += `\nSubtotal: AED ${total.toFixed(2)}\nEstimated Delivery: 2-3 Business Days\n\n(Note: Online payments are currently disabled. This is an order summary preview.)`;
+      alert(summaryText);
+    }
+
+    /* BACK-END ADMIN PORTAL LOGIC */
+    function openAdminPortal() {
+      document.getElementById('adminModal').classList.add('open');
+      populateAdminTables();
+    }
+
+    function closeAdminPortal() {
+      document.getElementById('adminModal').classList.remove('open');
+    }
+
+    function switchAdminTab(tabId, btn) {
+      document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function populateAdminTables() {
+      // Load Product Table
+      const tbody = document.getElementById('adminProductTable');
+      tbody.innerHTML = '';
+      storeData.products.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${p.id}</td>
+          <td>
+            <select onchange="updateProductField(${p.id}, 'category', this.value)">
+              ${storeData.categories.map(c => `<option value="${c}" ${c === p.category ? 'selected' : ''}>${c}</option>`).join('')}
+            </select>
+          </td>
+          <td><input type="text" value="${p.name}" onchange="updateProductField(${p.id}, 'name', this.value)" style="width: 100%;"></td>
+          <td><input type="number" step="0.01" value="${p.price}" onchange="updateProductField(${p.id}, 'price', parseFloat(this.value))" style="width: 80px;"></td>
+          <td><input type="text" value="${p.badge || ''}" onchange="updateProductField(${p.id}, 'badge', this.value)" style="width: 90px;"></td>
+          <td><button style="color: var(--accent-burgundy);" onclick="deleteProduct(${p.id})">Delete</button></td>
+        ];
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Load Content Fields
+      document.getElementById('editTopPromo').value = storeData.content.topPromo;
+      document.getElementById('editHeroSubtitle').value = storeData.content.heroSubtitle;
+      document.getElementById('editHeroTitle').value = storeData.content.heroTitle;
+      document.getElementById('editHeroDesc').value = storeData.content.heroDesc;
+
+      // Load Category Editor
+      const catBox = document.getElementById('adminCategoryList');
+      catBox.innerHTML = '';
+      storeData.categories.forEach((cat, idx) => {
+        const div = document.createElement('div');
+        div.style.cssText = "display: flex; gap: 10px; margin-bottom: 8px; align-items: center;";
+        div.innerHTML = `
+          <input type="text" value="${cat}" class="form-control" style="max-width: 250px;" onchange="updateCategoryName(${idx}, this.value)">
+          <button style="color: var(--accent-burgundy); font-size: 12px;" onclick="removeCategory(${idx})">Remove</button>
+        `;
+        catBox.appendChild(div);
+      });
+      const addCatBtn = document.createElement('button');
+      addCatBtn.className = "btn";
+      addCatBtn.style.cssText = "margin-top: 10px; padding: 6px 12px; font-size: 11px;";
+      addCatBtn.textContent = "+ Add Category";
+      addCatBtn.onclick = addNewCategoryPrompt;
+      catBox.appendChild(addCatBtn);
+    }
+
+    function updateProductField(id, field, value) {
+      const p = storeData.products.find(prod => prod.id === id);
+      if (p) {
+        p[field] = value;
+        saveData();
+      }
+    }
+
+    function deleteProduct(id) {
+      if (confirm("Are you sure you want to delete this product?")) {
+        storeData.products = storeData.products.filter(p => p.id !== id);
+        saveData();
+        populateAdminTables();
+      }
+    }
+
+    function addNewProductPrompt() {
+      const name = prompt("Enter product name:");
+      if (!name) return;
+      const price = parseFloat(prompt("Enter price in AED:") || "0");
+      const category = storeData.categories[0] || "Women";
+
+      const newId = Date.now();
+      storeData.products.push({ id: newId, category, name, price, badge: "New", oldPrice: 0 });
+      saveData();
+      populateAdminTables();
+    }
+
+    function saveContentChanges(e) {
+      e.preventDefault();
+      storeData.content.topPromo = document.getElementById('editTopPromo').value;
+      storeData.content.heroSubtitle = document.getElementById('editHeroSubtitle').value;
+      storeData.content.heroTitle = document.getElementById('editHeroTitle').value;
+      storeData.content.heroDesc = document.getElementById('editHeroDesc').value;
+      saveData();
+      alert("Store content updated successfully!");
+    }
+
+    function updateCategoryName(index, newName) {
+      if (newName.trim() === "") return;
+      storeData.categories[index] = newName.trim();
+      saveData();
+    }
+
+    function removeCategory(index) {
+      if (confirm("Remove this category?")) {
+        storeData.categories.splice(index, 1);
+        saveData();
+        populateAdminTables();
+      }
+    }
+
+    function addNewCategoryPrompt() {
+      const cat = prompt("Enter new category name:");
+      if (cat && cat.trim() !== "") {
+        if (cat.toLowerCase() === "food") {
+          alert("The Food category is excluded per requirements.");
+          return;
+        }
+        storeData.categories.push(cat.trim());
+        saveData();
+        populateAdminTables();
+      }
+    }
+
+    // Keyboard shortcut for quick access to Admin Portal (Ctrl + Shift + A)
+    window.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        openAdminPortal();
+      }
+    });
+
+    // Initialize Store on Page Load
+    renderStore();
+  </script>
+</body>
+</html>
